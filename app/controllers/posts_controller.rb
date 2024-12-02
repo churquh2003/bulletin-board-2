@@ -25,12 +25,12 @@ class PostsController < ApplicationController
     the_post.board_id = params.fetch("query_board_id")
 
     the_post.user_id = current_user.id
-    
+
     if the_post.valid?
       the_post.save
-      redirect_to("/boards/#{the_post.board_id}", { notice: "Post created successfully." })
+      redirect_to("/boards/#{the_post.board_id}", { :notice => "Post created successfully." })
     else
-      redirect_to("/boards/#{the_post.board_id}", { alert: the_post.errors.full_messages.to_sentence })
+      redirect_to("/boards/#{the_post.board_id}", { :alert => the_post.errors.full_messages.to_sentence })
     end
   end
 
