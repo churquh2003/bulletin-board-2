@@ -12,7 +12,9 @@
 #  user_id    :integer
 #
 class Post < ApplicationRecord
-  validates(:title, presence: true)
-  validates(:body, presence: true)
-  validates(:expires_on, presence: true)
+  belongs_to :user
+  belongs_to :board
+
+  validates :title, :body, :expires_on, presence: true
 end
+
